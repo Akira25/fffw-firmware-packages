@@ -1,8 +1,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=freifunk-berlin-autoupdate
-PKG_VERSION:=0.0.0
-PKG_RELEASE:=12
+PKG_VERSION:=0.7.2
+PKG_RELEASE:=1
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
 
@@ -18,7 +18,7 @@ endef
 define Package/freifunk-berlin-autoupdate
   $(call Package/freifunk-berlin-autoupdate/default)
   TITLE:=Freifunk Berlin Autoupdate
-  DEPENDS:=+uci
+  DEPENDS:=+uci +ntpclient
 endef
 
 define Package/freifunk-berlin-autoupdate/description
@@ -42,7 +42,7 @@ define Package/freifunk-berlin-autoupdate/install
 	$(INSTALL_DIR) $(1)/etc/uci-defaults
 	$(INSTALL_BIN) ./files/config/config_defaults.sh $(1)/etc/uci-defaults/freifunk-berlin-autoupdate.sh
 	$(INSTALL_DIR) $(1)/etc
-	$(INSTALL_DATA) .files/config/time.reminder $(1)/etc/time.reminder
+	$(INSTALL_DATA) ./files/config/time.reminder $(1)/etc/time.reminder
 	$(INSTALL_DIR) $(1)/usr/share/autoupdate/lib
 	$(INSTALL_DATA) ./files/lib/urlencode.sed $(1)/usr/share/autoupdate/lib/urlencode.sed
 	$(INSTALL_DATA) ./files/lib/libautoupdate.sh $(1)/usr/share/autoupdate/lib/libautoupdate.sh

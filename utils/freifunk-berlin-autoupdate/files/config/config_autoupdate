@@ -12,7 +12,7 @@ config settings 'automode'
         option branch 'fffw-testing'
 
 config settings 'internal'
-        option json_link_server 'http://freifunk.pcfw.eu/'
+        option json_link_server 'http://freifunk.domstadt-fuerstenwalde.de/updater/'
         option log_file '/root/autoupdate.log'
         option send_string_url 'http://freifunk.pcfw.eu'
         option minimum_signatures '2'
